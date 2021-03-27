@@ -24,7 +24,7 @@ https://learn.adafruit.com/adafruit-stemma-soil-sensor-i2c-capacitive-moisture-s
  and switch between going to sleep after a report, or staying 
  awake indefinitely.
  
- See services.png for an better view.
+ See services.png for a different view.
  
    A helpful webpage from randomnerdtutorials:
 
