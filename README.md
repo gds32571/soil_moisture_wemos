@@ -34,6 +34,3 @@ another good reference:
 
 https://thingpulse.com/max-deep-sleep-for-esp8266/
 
- Ask if you have questions!
-  
- 
