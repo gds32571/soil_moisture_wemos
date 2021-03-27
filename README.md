@@ -2,11 +2,11 @@
 
 ### soil_moisture_wemos.ino
 
-   Main file for the code using Deep Sleep to minimize power consumption.
+   Main file for the code using Deep Sleep to minimize power consumption.  My original version ran on an Arduino UNO, now runs on an ESP8266 style processor, the ESP8285 specifically (Wemos D1 Mini Lite).
    
 ### secrets_example.h
  
-   Set up secrets.h file like this.  The MYADDR field is the last octet of the IP address.
+   Set up your secrets.h file like this.  The MYADDR field is the last octet of the IP address. I use a 192.168.2.x network.
    
 Connect the Adafruit sensor as described in:
 
