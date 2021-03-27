@@ -2,7 +2,7 @@
 
 ### soil_moisture_wemos.ino
 
-   Main file for the code using Deep Sleep to minimize power consumption.  My original version ran on an Arduino UNO, now runs on an ESP8266 style processor, the ESP8285 specifically (Wemos D1 Mini Lite).
+   This main file for the code uses the Deep Sleep mode to minimize power consumption.  The original version ran on an Arduino UNO, now runs on an ESP8266 style processor, the ESP8285 specifically (Wemos D1 Mini Lite).
    
    The code is setup for over-the-air updating.  You need to tell the ESP8266 device to stay awake (using the awake command described below) rather than sleeping so you will have enough time to update it.  You can command it to go back to the normal transmit-then-sleep cycle after you have updated it.
    
@@ -10,13 +10,13 @@
  
    Set up your secrets.h file like this.  The MYADDR field is the last octet of the IP address. I use a 192.168.2.x network.
    
-Connect the Adafruit sensor as described in:
+Connect the Adafruit SeeSaw soil moisture sensor as described in:
 
 https://learn.adafruit.com/adafruit-stemma-soil-sensor-i2c-capacitive-moisture-sensor
 
-   The sensor draws 5 mA in normal operation.  You can connect the +V pin to D6 on the ESP8266 and the program will turn the sensor on when starting.  It will turn the sensor off when going to sleep.  So instead of 5 mA, the whole setup draws about 0.1 mA.
+   The sensor draws 5 mA in normal operation.  You can connect the +V pin to D6 on the ESP8266 and the program will turn the sensor on when starting, then turn the sensor off when going to sleep.  So instead of 5 mA, the whole setup draws about 0.1 mA when asleep.
 
-   In HA "Services" mqtt.publish use this example to set retain flag for this topic
+   In the HA developer tool "Services", using the mqtt.publish service use this example to set the desired mode along with the retain flag for this topic.  This way the ESP8266 will get the message when itconnects after being asleep.
 
 #### {"topic": "sm1/modereq","payload":"awake","retain":true}
  -or-
