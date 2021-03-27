@@ -4,13 +4,13 @@
 *   
 *   modified from adafruit example
 * 
-* 
 * In HA "Services" mqtt.publish use this to set retain flag for this topic
+* {"topic": "sm1/modereq","payload":"awake","retain":true}
+* or 
 * {"topic": "sm1/modereq","payload":"sleep","retain":true}
 * and switch between going to sleep after a report, or staying 
 * awake indefinitely.
 *************************************************/
-
 
 #include "Adafruit_seesaw.h"
 
@@ -24,27 +24,25 @@
 
 #include <PubSubClient.h>
 
-#define VERSION "0.94"
+#define VERSION "0.95"
 
 #include "secrets.h"
 
-//********************************
-#define mqtt_user "hass"                //enter your MQTT username
-#define mqtt_password "hass"            //enter your password
-#define mqtt_client "client-soilmoisture1"    // must be unique for each board/client
-//********************************
-
 WiFiClient espClient;
 PubSubClient client(espClient);
+
+// in microseconds
+unsigned long SleepTimer = 300e6;
+bool SleepStatus = 0;    // 1 = going to sleep   0 = staying awake
 
 const int onesec = 1000;
 unsigned long myMillis = 0;
 unsigned long oldMillis = 0;
 
+// allows early report before sleeping
 unsigned int mySecs = 55;
 unsigned int myMins = 0;
 unsigned int cntMR = 0;
-bool SleepStatus = 0;    // 1 = going to sleep   0 = staying awake
 
 Adafruit_seesaw ss;
 const char* WiFi_hostname = "soilmoisture1";
@@ -116,6 +114,8 @@ void loop() {
   client.loop();
 
   myMillis = millis();
+
+  // one second timer
   if ((myMillis - oldMillis) >= onesec) {
     //    oldMillis = myMillis;
     oldMillis += onesec;
@@ -158,7 +158,7 @@ void loop() {
 
     }
     //    oldMillis = myMillis;
-  }
+  } // one second timer
 
 //  client.loop();
   if (SleepStatus == 1 && millis() > 20000) {   // was 70000
@@ -172,7 +172,7 @@ void loop() {
     delay(5000);
     WiFi.disconnect();
     delay(2000);
-    ESP.deepSleep(300e6);
+    ESP.deepSleep(SleepTimer);
   }
 
 }
