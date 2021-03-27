@@ -179,6 +179,7 @@ void loop() {
     delay(5000);
     WiFi.disconnect();
     delay(2000);
+    // on a test board here, the current drops to about 100 microamps.
     ESP.deepSleep(SleepTimer);
   }
 
