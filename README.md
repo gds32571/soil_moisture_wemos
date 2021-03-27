@@ -4,7 +4,7 @@
 
    This main file for the code uses the Deep Sleep mode to minimize power consumption.  The original version ran on an Arduino UNO, now runs on an ESP8266 style processor, the ESP8285 specifically (Wemos D1 Mini Lite).
    
-   The code is setup for over-the-air updating.  You need to tell the ESP8266 device to stay awake (using the awake command described below) rather than sleeping so you will have enough time to update it.  You can command it to go back to the normal transmit-then-sleep cycle after you have updated it.
+   The code allows for over-the-air updating.  You need to signal the ESP8266 device to stay awake (using the awake command described below) rather than sleeping so you will have enough time to update it.  You can command it to go back to the normal transmit-then-sleep cycle after you have updated the code.
    
 ### secrets_example.h
  
