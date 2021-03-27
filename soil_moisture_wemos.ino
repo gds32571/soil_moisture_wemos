@@ -28,28 +28,31 @@
 
 #include <PubSubClient.h>
 
-#define VERSION "0.95"
+#define VERSION "0.96"
 
 #include "secrets.h"
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-// in microseconds
-unsigned long SleepTimer = 300e6;
-bool SleepStatus = 0;    // 1 = going to sleep   0 = staying awake
+// sleep time is in microseconds
+//unsigned long SleepTimer = 300e6;   // 300e6 is 300 x 10^6 microseconds (5 minutes)
+unsigned long SleepTimer = 1800e6;    // 1800e6 is 1800 x 10^6 microseconds (30 minutes)
+bool SleepStatus = 0;                 // 1 = going to sleep   0 = staying awake
 
 const int onesec = 1000;
 unsigned long myMillis = 0;
 unsigned long oldMillis = 0;
 
-// allows early report before sleeping
+// the 55 allows an early report before sleeping
+// rather than waiting a whole 60 seconds
 unsigned int mySecs = 55;
 unsigned int myMins = 0;
 unsigned int cntMR = 0;
 
 Adafruit_seesaw ss;
 const char* WiFi_hostname = "soilmoisture1";
+// isn't this goofy?
 const int led     = LED_BUILTIN; // blue LED on the ESP board
 const int myLed   = LED_BUILTIN; // blue LED on the ESP board
 const int warning = LED_BUILTIN; // blue LED on the ESP board

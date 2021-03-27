@@ -4,6 +4,8 @@
 
    Main file for the code using Deep Sleep to minimize power consumption.  My original version ran on an Arduino UNO, now runs on an ESP8266 style processor, the ESP8285 specifically (Wemos D1 Mini Lite).
    
+   The code is setup for over-the-air updating.  You need to tell the ESP8266 device to stay awake (using the awake command described below) rather than sleeping so you will have enough time to update it.  You can command it to go back to the normal transmit-then-sleep cycle after you have updated it.
+   
 ### secrets_example.h
  
    Set up your secrets.h file like this.  The MYADDR field is the last octet of the IP address. I use a 192.168.2.x network.
