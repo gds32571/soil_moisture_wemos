@@ -26,10 +26,14 @@ https://learn.adafruit.com/adafruit-stemma-soil-sensor-i2c-capacitive-moisture-s
  
  See services.png for an better view.
  
-   A helpful webpage from our friends at randomnerdtutorials:
+   A helpful webpage from randomnerdtutorials:
 
 https://randomnerdtutorials.com/esp8266-deep-sleep-with-arduino-ide/
 
+another good reference:
+
+https://thingpulse.com/max-deep-sleep-for-esp8266/
+
  Ask if you have questions!
   
-   
+ 
