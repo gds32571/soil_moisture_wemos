@@ -4,12 +4,16 @@
 *   
 *   modified from adafruit example
 * 
-* In HA "Services" mqtt.publish use this to set retain flag for this topic
+* In HA "Services" mqtt.publish use this to send a message
+* to the controller about the desired mode (and set retain flag for this topic)
+* 
 * {"topic": "sm1/modereq","payload":"awake","retain":true}
 * or 
 * {"topic": "sm1/modereq","payload":"sleep","retain":true}
-* and switch between going to sleep after a report, or staying 
-* awake indefinitely.
+* 
+* and switch between going to sleep after a report, or 
+* staying awake indefinitely and continuing to report 
+* every minute.
 *************************************************/
 
 #include "Adafruit_seesaw.h"
